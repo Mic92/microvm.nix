@@ -23,7 +23,9 @@ in {
       else lib.escapeShellArgs (
         [
           "${firectl}/bin/firectl"
-          "--firecracker-binary=${pkgs.firecracker}/bin/firecracker"
+          "--firecracker-binary=${pkgs.writeShellScript "firecracker" ''
+            exec ${pkgs.firecracker}/bin/firecracker --seccomp-level 0 "$@"
+          ''}"
           "-m" (toString mem)
           "-c" (toString vcpu)
           "--kernel=${config.system.build.kernel.dev}/vmlinux"
