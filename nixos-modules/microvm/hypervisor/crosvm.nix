@@ -14,6 +14,7 @@ in {
       else lib.escapeShellArgs (
         [
           "${pkgs.crosvm}/bin/crosvm" "run"
+          "--disable-sandbox"
           "-m" (toString mem)
           "-c" (toString vcpu)
           "-r" rootDisk
