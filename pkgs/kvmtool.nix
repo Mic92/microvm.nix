@@ -9,6 +9,10 @@ stdenv.mkDerivation {
     sha256 = "sha256-QhT0znxlLWhFtN2DiwU0Zl3IYJDpynX8DYBHVTxy8iU=";
   };
 
+  patches = [
+    ./0001-x86_64-fix-glibc-isa-detection.patch
+  ];
+
   buildInputs = [
     zlib libaio libbfd
   ];
