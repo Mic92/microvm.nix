@@ -120,7 +120,7 @@ in {
       "-device" "usb-kbd"
      ]
      else [
-      "-nographic"
+      "-vnc" ":0"
      ]) ++
     lib.optionals canSandbox [
       "-sandbox" "on"
